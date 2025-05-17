@@ -1,0 +1,88 @@
+/* Genel stil ayarları */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e1f23, #2a2b30);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Kayıt formu konteyneri */
+#register-container {
+    background-color: #2c2d33;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 350px;
+}
+
+/* Başlık */
+#register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Form ve inputlar */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #3c3d42;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #777;
+}
+
+/* Buton */
+button[type="submit"] {
+    padding: 12px;
+    background-color: #2f80ed;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #1366d6;
+}
+
+/* Alt metin */
+#register-container p {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #cccccc;
+    text-align: center;
+}
+
+#register-container a {
+    color: #2f80ed;
+    text-decoration: none;
+}
+
+#register-container a:hover {
+    text-decoration: underline;
+}

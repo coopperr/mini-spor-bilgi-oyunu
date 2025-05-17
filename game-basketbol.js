@@ -1,0 +1,81 @@
+const sports = {
+    basketbol: [
+        { isim: "LeBron James", yas: 40, ulke: "ABD", takim: "Los Angeles Lakers" },
+        { isim: "Stephen Curry", yas: 37, ulke: "ABD", takim: "Golden State Warriors" },
+        { isim: "Giannis Antetokounmpo", yas: 30, ulke: "Yunanistan", takim: "Milwaukee Bucks" },
+        { isim: "Nikola Jokic", yas: 30, ulke: "Sırbistan", takim: "Denver Nuggets" },
+        { isim: "Kevin Durant", yas: 36, ulke: "ABD", takim: "Phoenix Suns" },
+        { isim: "Luka Doncic", yas: 26, ulke: "Slovenya", takim: "Dallas Mavericks" },
+        { isim: "Joel Embiid", yas: 31, ulke: "Kamerun", takim: "Philadelphia 76ers" },
+        { isim: "Jayson Tatum", yas: 27, ulke: "ABD", takim: "Boston Celtics" }
+    ]
+};
+
+let score = 0;
+let attempts = 3;
+let selectedPlayer;
+
+function initGame() {
+    const randomIndex = Math.floor(Math.random() * sports.basketbol.length);
+    selectedPlayer = sports.basketbol[randomIndex];
+
+    document.getElementById('sport-player').innerHTML = `
+        <p><strong>Yaş:</strong> ${selectedPlayer.yas}</p>
+        <p><strong>Ülke:</strong> ${selectedPlayer.ulke}</p>
+        <p><strong>Takım:</strong> ${selectedPlayer.takim}</p>
+    `;
+
+    const buttonsDiv = document.getElementById('buttons');
+    buttonsDiv.innerHTML = ""; // Eski butonları temizle
+
+    sports.basketbol.forEach(player => {
+        const button = document.createElement('button');
+        button.textContent = player.isim;
+        button.onclick = () => checkAnswer(player.isim, selectedPlayer.isim);
+        buttonsDiv.appendChild(button);
+    });
+}
+
+function checkAnswer(selected, correct) {
+    if (attempts <= 0) return; // Oyun bitti
+
+    if (selected === correct) {
+        score += 10;
+        alert('Doğru tahmin! +10 Puan');
+        initGame(); // Yeni tur başlat
+    } else {
+        attempts--;
+        alert(`Yanlış! Kalan Hak: ${attempts}`);
+    }
+
+    if (attempts <= 0) {
+        document.getElementById('score-board').style.display = 'block';
+        document.getElementById('score').textContent = `Puanınız: ${score}`;
+
+        // Tüm butonları devre dışı bırak
+        document.querySelectorAll('#buttons button').forEach(btn => btn.disabled = true);
+
+        // 3 saniye sonra yönlendir
+        setTimeout(() => {
+            alert("Oyun bitti! Spor seçim ekranına yönlendiriliyorsunuz.");
+            // Oyuncunun hakkı bittiğinde:
+            endGameAndSaveScore(score); // score: o ana kadar kazandığı puan
+            window.location.href = 'game.html'; // Oyun bittiğinde, oyun sayfasına yönlendir
+        }, 3000);
+    }
+}
+
+function endGameAndSaveScore(currentScore) {
+    const activeUser = localStorage.getItem('currentUser');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    const userIndex = users.findIndex(u => u.username === activeUser);
+    if (userIndex !== -1) {
+        // Kullanıcıyı bulduğunda mevcut skoru güncelle
+        users[userIndex].score += currentScore;
+        localStorage.setItem('users', JSON.stringify(users)); // Güncellenmiş kullanıcı verisini kaydet
+    }
+}
+
+// Oyunu başlat
+initGame();

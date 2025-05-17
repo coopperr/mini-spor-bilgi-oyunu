@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voleybol - Sporcu Tahmin Oyunu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video arka plan -->
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="images/6217180-hd_1920_1080_30fps.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="game-screen">
+        <h2>Voleybol - Tahmin Oyunu</h2>
+        <p>Sporcu Bilgilerini Tahmin Edin:</p>
+        <div id="sporcudetails">
+            <h3>Voleybolcu Bilgisi</h3>
+            <div id="sport-player"></div>
+            <div id="buttons"></div>
+        </div>
+
+        <div id="score-board" style="display:none;">
+            <h3>Puan Durumu</h3>
+            <p id="score"></p>
+        </div>
+        
+         <!-- Spor seçim sayfasına geri git butonu -->
+         <button onclick="window.location.href='game.html'">Spor Seçim Sayfasına Geri Git</button>
+    </div>
+
+    <script src="game-voleybol.js"></script>
+</body>
+</html>

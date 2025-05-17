@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporcu Tahmin Oyunu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="images/1466464-uhd_4096_2160_24fps.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div id="game-screen">
+        <h2>Hoşgeldiniz, <span id="user-name"></span></h2>
+        <p>Spor Dalı Seçin:</p>
+        <button class="sport-btn" data-sport="futbol">Futbol</button>
+        <button class="sport-btn" data-sport="basketbol">Basketbol</button>
+        <button class="sport-btn" data-sport="voleybol">Voleybol</button>
+
+        <div id="sporcudetails" style="display:none;">
+            <h3>Seçilen Spor Daldan Sporcu:</h3>
+            <div id="sport-player"></div>
+            <div id="buttons"></div>
+        </div>
+
+        <div id="score-board" style="display:none;">
+            <h3>Puan Durumu</h3>
+            <p id="score"></p>
+        </div>
+
+        <!-- Puan Tablosuna Git butonu -->
+        <button onclick="window.location.href='puan-tablosu.html'">Puan Tablosuna Git</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
